@@ -1,6 +1,7 @@
 import React from 'react';
 import ReactDom from "react-dom";
 import "./index.css";
+import "./index.leitss";
 import Img from "./images/logo.jpg";
 import { Button } from 'antd'
 import { add } from "./util";
@@ -11,7 +12,6 @@ class Index extends React.Component {
         age: ''
     }
     getInfo = () => {
-        console.log('2222')
         window.fetch('/api/getinfo', {
             method: "POST",
             body: "name=wangbing"
@@ -29,7 +29,7 @@ class Index extends React.Component {
         return <div className='red'>
             <img src={Img} className='logo' />
             <Button onClick={this.getInfo}>hello webpack111{sum}</Button>
-            <div>{this.state.name}</div>
+            <div className='name'>{this.state.name}</div>
             <div>{this.state.age}</div>
         </div>
     }

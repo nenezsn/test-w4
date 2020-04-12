@@ -24,15 +24,6 @@ module.exports = {
             },
             {
                 test: /\.css$/,
-                include: /node_modules/,
-                loader: [
-                    'style-loader',
-                    "css-loader"
-                ]
-            },
-            {
-                test: /\.css$/,
-                exclude: /node_modules/,
                 use: [
                     {
                         loader: MiniCssExtractPlugin.loader,
@@ -47,6 +38,20 @@ module.exports = {
                             plugins: () => [require('autoprefixer')({
                                 browsers: ['last 2 version']
                             })]
+                        }
+                    }
+                ]
+            },
+            {
+                test: /\.less$/,
+                include: SRC_PATH,
+                use: [
+                    'style-loader',
+                    'css-loader',
+                    {
+                        loader: 'less-loader',
+                        options: {
+                            javascriptEnabled: true
                         }
                     }
                 ]
