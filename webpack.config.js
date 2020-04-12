@@ -1,5 +1,6 @@
 var path = require('path')
 var webpack = require('webpack')
+const HtmlWebpackExternalsPlugin = require('html-webpack-externals-plugin')
 var HtmlWebpackPlugin = require('html-webpack-plugin');//生成html
 var MiniCssExtractPlugin = require('mini-css-extract-plugin');//提取css
 var { CleanWebpackPlugin } = require('clean-webpack-plugin');//清除工程产物
@@ -90,6 +91,19 @@ module.exports = {
         new webpack.DefinePlugin({
             'env': JSON.stringify('local')
         }),
+        // new HtmlWebpackExternalsPlugin({
+        //     externals: [
+        //         {
+        //             module: 'react',
+        //             entry: 'https://cdn.bootcss.com/react/16.13.1/umd/react.production.min.js',
+        //             global: 'React',
+        //         }, {
+        //             module: 'react-dom',
+        //             entry: 'https://cdn.bootcss.com/react-dom/16.13.1/umd/react-dom.production.min.js',
+        //             global: 'ReactDom',
+        //         }
+        //     ],
+        // })
     ],
     devServer: {
         contentBase: path.join(__dirname, 'dist'),
