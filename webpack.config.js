@@ -13,9 +13,9 @@ const SRC_PATH = path.resolve(__dirname, 'src');
 module.exports = {
     entry: path.join(__dirname, 'src/index.js'),
     output: {
-        filename: 'bundle.js',
+        filename: '[name].[chunkhash:8].js',
         path: path.join(__dirname, 'dist'),
-        publicPath:'/'
+        publicPath:''
     },
     mode: "development",
     module: {
@@ -78,7 +78,9 @@ module.exports = {
                 use: {
                     loader: 'url-loader',
                     options: {
-                        limit: '10000'
+                        name:'image/[name].[hash:8]/.[ext]',
+                        limit: '10000',
+                        outputPath:'image/'
                     }
                 }
             }
@@ -97,7 +99,7 @@ module.exports = {
 		      }
         }),
         new MiniCssExtractPlugin({
-            filename: '[name].css',
+            filename: '[name].[contenthash:8].css',
             chunkFilename: '[id].css',
         }),
         new OptimizeCssAssetsPlugin({
