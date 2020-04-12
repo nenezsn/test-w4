@@ -7,7 +7,6 @@ var { CleanWebpackPlugin } = require('clean-webpack-plugin');//清除工程产�
 var OptimizeCssAssetsPlugin = require('optimize-css-assets-webpack-plugin');//压缩css
 var FriendlyErrorsWebpackPlugin = require('friendly-errors-webpack-plugin');//webpack simple log
 
-
 const ProgressBarPlugin = require('progress-bar-webpack-plugin');
 const chalk = require('chalk');
 
@@ -113,13 +112,13 @@ module.exports = {
             'env': JSON.stringify('local')
         }),
         new FriendlyErrorsWebpackPlugin(),
-        // new ProgressBarPlugin({
-        //     format:
-        //         'build [:bar]' +
-        //         chalk.green.bold(':percent') +
-        //         ' (:elapsed)',
-        //     width: 40
-        // }),
+        new ProgressBarPlugin({
+            format:
+                'build [:bar]' +
+                chalk.green.bold(':percent') +
+                ' (:elapsed)',
+            width: 40
+        }),
         // new HtmlWebpackExternalsPlugin({
         //     externals: [
         //         {
