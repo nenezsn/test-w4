@@ -5,6 +5,9 @@ var HtmlWebpackPlugin = require('html-webpack-plugin');//生成html
 var MiniCssExtractPlugin = require('mini-css-extract-plugin');//提取css
 var { CleanWebpackPlugin } = require('clean-webpack-plugin');//清除工程产物
 var OptimizeCssAssetsPlugin = require('optimize-css-assets-webpack-plugin');//压缩css
+
+const SRC_PATH = path.resolve(__dirname, 'src');
+
 module.exports = {
     entry: path.join(__dirname, 'src/index.js'),
     output: {
@@ -15,7 +18,8 @@ module.exports = {
     module: {
         rules: [
             {
-                test: /\.js$/,
+                test: /\.js?$/,
+                include:SRC_PATH,
                 use: 'babel-loader'
             },
             {
@@ -78,7 +82,11 @@ module.exports = {
             title: 'hello wp4',
             filename: 'index.html',
             template: path.join(__dirname, 'src/index.html'),
-
+            minify: {
+		        removeComments: true,
+		        collapseWhitespace: true,
+		        removeAttributeQuotes: true
+		      }
         }),
         new MiniCssExtractPlugin({
             filename: '[name].css',
@@ -108,6 +116,16 @@ module.exports = {
     devServer: {
         contentBase: path.join(__dirname, 'dist'),
         port: '8000',
-        hot: true
+        hot: true,
+        open:true,
+        proxy: {
+            "/api": {
+                target: "http://yapi.demo.qunar.com/mock/97860/",
+                changeOrigin: true,
+                pathRewrite: {
+                    "^/api": "/"
+                }
+            }
+        }
     }
 }
