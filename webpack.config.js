@@ -26,7 +26,14 @@ module.exports = {
                         },
                     },
                     'css-loader',
-                    'postcss-loader'
+                    {
+                        loader:'postcss-loader',
+                        options:{
+                            plugins:()=>[require('autoprefixer')({
+                                browsers:['last 2 version']
+                            })]
+                        }
+                    }
                 ]
             },
             {
@@ -51,12 +58,11 @@ module.exports = {
         new MiniCssExtractPlugin({
             filename: '[name].css',
             chunkFilename: '[id].css',
-        }),
-        new OptimizeCssAssetsPlugin({
+          }),
+          new OptimizeCssAssetsPlugin({
             assetNameRegExp: /\.css$/g,
             cssProcessor: require('cssnano')
-        }),
-        require('autoprefixer')({ overrideBrowserslist: ['> 0.15% in CN'] })
+          })
     ],
     devServer: {
         contentBase: path.join(__dirname, 'dist'),
