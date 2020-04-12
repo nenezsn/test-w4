@@ -11,22 +11,19 @@ class Index extends React.Component {
         name: '',
         age: ''
     }
-    getInfo = () => {
-        window.fetch('/api/getinfo', {
+    getInfo = async () => {
+        let data = await window.fetch('/api/getinfo', {
             method: "POST",
             body: "name=wangbing"
-        }).then(data => data.json())
-            .then(data => {
-                this.setState({
-                    name: data.name,
-                    age: data.age
-                })
-            })
+        })
+        data = await data.json()
+        this.setState({
+            name: data.name,
+            age: data.age
+        })
 
     }
     render() {
-        console.log('222')
-        console.error('2222')
         const sum = add(1, 3)
         return <div className='red'>
             <img src={Img} className='logo' />

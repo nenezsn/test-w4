@@ -4,6 +4,7 @@
         "@babel/preset-react"
     ],
     "plugins": [
+        "@babel/plugin-transform-runtime",
         ["transform-remove-console", { "exclude": [ "error", "warn"] }],
         [
             "import",
