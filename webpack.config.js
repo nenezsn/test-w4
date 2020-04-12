@@ -13,7 +13,7 @@ const SRC_PATH = path.resolve(__dirname, 'src');
 module.exports = {
     entry: path.join(__dirname, 'src/index.js'),
     output: {
-        filename: '[name].[chunkhash:8].js',
+        filename: '[name].js',
         path: path.join(__dirname, 'dist'),
         publicPath:''
     },
@@ -78,7 +78,7 @@ module.exports = {
                 use: {
                     loader: 'url-loader',
                     options: {
-                        name:'image/[name].[hash:8]/.[ext]',
+                        name:'image/[name].[hash:8].[ext]',
                         limit: '10000',
                         outputPath:'image/'
                     }
@@ -115,16 +115,16 @@ module.exports = {
                 chalk.green.bold(':percent') +
                 ' (:elapsed)',
             width: 40
-        })
+        }),
         // new HtmlWebpackExternalsPlugin({
         //     externals: [
         //         {
         //             module: 'react',
-        //             entry: 'https://cdn.bootcss.com/react/16.13.1/umd/react.production.min.js',
+        //             entry: 'https://cdn.bootcss.com/react/16.8.1/umd/react.production.min.js',
         //             global: 'React',
         //         }, {
         //             module: 'react-dom',
-        //             entry: 'https://cdn.bootcss.com/react-dom/16.13.1/umd/react-dom.production.min.js',
+        //             entry: 'https://cdn.bootcss.com/react-dom/16.8.1/umd/react-dom.production.min.js',
         //             global: 'ReactDom',
         //         }
         //     ],
@@ -136,6 +136,10 @@ module.exports = {
         alias: {
             '@util': path.resolve(__dirname, 'src/util'),
         }
+    },
+    externals:{
+        'react-dom': 'ReactDOM',
+        'react': 'React'
     },
     devServer: {
         contentBase: path.join(__dirname, 'dist'),
