@@ -1,10 +1,12 @@
 var path = require('path')
 var webpack = require('webpack')
-const HtmlWebpackExternalsPlugin = require('html-webpack-externals-plugin')
+const HtmlWebpackExternalsPlugin = require('html-webpack-externals-plugin')//抽离公共包
 var HtmlWebpackPlugin = require('html-webpack-plugin');//生成html
 var MiniCssExtractPlugin = require('mini-css-extract-plugin');//提取css
 var { CleanWebpackPlugin } = require('clean-webpack-plugin');//清除工程产物
 var OptimizeCssAssetsPlugin = require('optimize-css-assets-webpack-plugin');//压缩css
+const ProgressBarPlugin = require('progress-bar-webpack-plugin');
+const chalk = require('chalk');
 
 const SRC_PATH = path.resolve(__dirname, 'src');
 
@@ -12,9 +14,10 @@ module.exports = {
     entry: path.join(__dirname, 'src/index.js'),
     output: {
         filename: 'bundle.js',
-        path: path.join(__dirname, 'dist')
+        path: path.join(__dirname, 'dist'),
+        publicPath:'/'
     },
-    mode: "production",
+    mode: "development",
     module: {
         rules: [
             {
@@ -104,6 +107,13 @@ module.exports = {
         new webpack.DefinePlugin({
             'env': JSON.stringify('local')
         }),
+        new ProgressBarPlugin({
+            format:
+                'build [:bar]' +
+                chalk.green.bold(':percent') +
+                ' (:elapsed)',
+            width: 40
+        })
         // new HtmlWebpackExternalsPlugin({
         //     externals: [
         //         {
@@ -118,11 +128,20 @@ module.exports = {
         //     ],
         // })
     ],
+    resolve: {
+        modules: [path.resolve('node_modules')],
+        extensions: ['.js'],
+        alias: {
+            '@util': path.resolve(__dirname, 'src/util'),
+        }
+    },
     devServer: {
         contentBase: path.join(__dirname, 'dist'),
         port: '8000',
         hot: true,
         open:true,
+        compress: true,
+        historyApiFallback: true,
         proxy: {
             "/api": {
                 target: "http://yapi.demo.qunar.com/mock/97860/",

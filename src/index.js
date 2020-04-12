@@ -1,10 +1,10 @@
 import React from 'react';
 import ReactDom from "react-dom";
 import "./index.css";
-import "./index.leitss";
+import "./index.less";
 import Img from "./images/logo.jpg";
 import { Button } from 'antd'
-import { add } from "./util";
+import { add } from "@util";//这种方式不能连接到源地址
 
 class Index extends React.Component {
     state = {
