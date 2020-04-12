@@ -25,6 +25,8 @@ class Index extends React.Component {
 
     }
     render() {
+        console.log('222')
+        console.error('2222')
         const sum = add(1, 3)
         return <div className='red'>
             <img src={Img} className='logo' />

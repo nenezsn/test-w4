@@ -17,7 +17,7 @@ module.exports = {
         path: path.join(__dirname, 'dist'),
         publicPath:''
     },
-    mode: "development",
+    mode: "production",
     module: {
         rules: [
             {
