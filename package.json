@@ -2,7 +2,7 @@
   "scripts": {
     "build": "webpack",
     "dev": "webpack-dev-server --open",
-    "build-prod":"webpack --config webpack.config.prod.js"
+    "build-prod": "webpack --config webpack.config.prod.js"
   },
   "devDependencies": {
     "@babel/core": "^7.9.0",
@@ -40,6 +40,9 @@
   "dependencies": {
     "@babel/plugin-transform-runtime": "^7.9.0",
     "@babel/runtime": "^7.9.2",
-    "antd": "^4.1.2"
+    "antd": "^4.1.2",
+    "body-parser": "^1.19.0",
+    "cookie-parser": "^1.4.5",
+    "express": "^4.16.3"
   }
 }
