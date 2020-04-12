@@ -1,4 +1,5 @@
 var path = require('path')
+var webpack = require('webpack')
 var HtmlWebpackPlugin = require('html-webpack-plugin');//生成html
 var MiniCssExtractPlugin = require('mini-css-extract-plugin');//提取css
 var { CleanWebpackPlugin } = require('clean-webpack-plugin');//清除工程产物
@@ -36,10 +37,10 @@ module.exports = {
                     },
                     'css-loader',
                     {
-                        loader:'postcss-loader',
-                        options:{
-                            plugins:()=>[require('autoprefixer')({
-                                browsers:['last 2 version']
+                        loader: 'postcss-loader',
+                        options: {
+                            plugins: () => [require('autoprefixer')({
+                                browsers: ['last 2 version']
                             })]
                         }
                     }
@@ -81,11 +82,14 @@ module.exports = {
         new MiniCssExtractPlugin({
             filename: '[name].css',
             chunkFilename: '[id].css',
-          }),
-          new OptimizeCssAssetsPlugin({
+        }),
+        new OptimizeCssAssetsPlugin({
             assetNameRegExp: /\.css$/g,
             cssProcessor: require('cssnano')
-          })
+        }),
+        new webpack.DefinePlugin({
+            'env': JSON.stringify('local')
+        }),
     ],
     devServer: {
         contentBase: path.join(__dirname, 'dist'),
