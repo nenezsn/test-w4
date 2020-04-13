@@ -10,7 +10,7 @@ var FriendlyErrorsWebpackPlugin = require('friendly-errors-webpack-plugin');//we
 const ProgressBarPlugin = require('progress-bar-webpack-plugin');
 const chalk = require('chalk');
 
-const theme = require('./antd_theme.js')
+const theme = require('./theme.js')
 
 const SRC_PATH = path.resolve(__dirname, 'src');
 
