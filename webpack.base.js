@@ -10,6 +10,8 @@ var FriendlyErrorsWebpackPlugin = require('friendly-errors-webpack-plugin');//we
 const ProgressBarPlugin = require('progress-bar-webpack-plugin');
 const chalk = require('chalk');
 
+const theme = require('./antd_theme.js')
+
 const SRC_PATH = path.resolve(__dirname, 'src');
 
 module.exports = {
@@ -44,7 +46,14 @@ module.exports = {
                 include: SRC_PATH,
                 use: [
                     'style-loader',
-                    'css-loader',
+                    {
+                        loader: 'css-loader',
+                        options: {
+                            modules:{
+                                localIdentName: '[local]_[hash:base64:5]'
+                            }
+                        }
+                    },
                     {
                         loader: 'less-loader',
                         options: {
@@ -62,6 +71,7 @@ module.exports = {
                     {
                         loader: 'less-loader',
                         options: {
+                            modifyVars: theme,
                             javascriptEnabled: true
                         }
                     }
