@@ -36,14 +36,7 @@ module.exports = {
                         },
                     },
                     'css-loader',
-                    {
-                        loader: 'postcss-loader',
-                        options: {
-                            plugins: () => [require('autoprefixer')({
-                                browsers: ['last 2 version']
-                            })]
-                        }
-                    }
+                    'postcss-loader'
                 ]
             },
             {

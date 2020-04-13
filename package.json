@@ -1,4 +1,12 @@
 {
+  "postcss":{
+    "plugins":{
+      "autoprefixer":{}
+    }
+  },
+  "browserslist": [
+    "last 2 version"
+  ],
   "scripts": {
     "build": "webpack",
     "dev": "webpack-dev-server --open",
