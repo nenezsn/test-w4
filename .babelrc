@@ -1,11 +1,17 @@
 {
+    "env": {
+        "production": {
+          "plugins": [
+            ["transform-remove-console", { "exclude": [ "error", "warn"] }]
+          ]
+        }
+      },
     "presets":[
         "@babel/preset-env",
         "@babel/preset-react"
     ],
     "plugins": [
         "@babel/plugin-transform-runtime",
-        ["transform-remove-console", { "exclude": [ "error", "warn"] }],
         [
             "import",
             { "libraryName": "antd", "libraryDirectory": "es", "style": true }
