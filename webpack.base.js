@@ -6,6 +6,7 @@ var MiniCssExtractPlugin = require('mini-css-extract-plugin');//提取css
 var { CleanWebpackPlugin } = require('clean-webpack-plugin');//清除工程产物
 var OptimizeCssAssetsPlugin = require('optimize-css-assets-webpack-plugin');//压缩css
 var FriendlyErrorsWebpackPlugin = require('friendly-errors-webpack-plugin');//webpack simple log
+var CopyWebpackPlugin = require('copy-webpack-plugin');//将某个目录直接拷贝到dist
 
 const ProgressBarPlugin = require('progress-bar-webpack-plugin');
 const chalk = require('chalk');
@@ -19,13 +20,13 @@ module.exports = {
     output: {
         filename: '[name].js',
         path: path.join(__dirname, 'dist'),
-        publicPath:''
+        publicPath: ''
     },
     module: {
         rules: [
             {
                 test: /\.js?$/,
-                include:SRC_PATH,
+                include: SRC_PATH,
                 use: 'babel-loader'
             },
             {
@@ -49,7 +50,7 @@ module.exports = {
                     {
                         loader: 'css-loader',
                         options: {
-                            modules:{
+                            modules: {
                                 localIdentName: '[local]_[hash:base64:5]'
                             }
                         }
@@ -82,9 +83,9 @@ module.exports = {
                 use: {
                     loader: 'url-loader',
                     options: {
-                        name:'image/[name].[hash:8].[ext]',
+                        name: 'image/[name].[hash:8].[ext]',
                         limit: '10000',
-                        outputPath:'image/'
+                        outputPath: 'image/'
                     }
                 }
             }
@@ -97,10 +98,10 @@ module.exports = {
             filename: 'index.html',
             template: path.join(__dirname, 'src/index.html'),
             minify: {
-		        removeComments: true,
-		        collapseWhitespace: true,
-		        removeAttributeQuotes: true
-		      }
+                removeComments: true,
+                collapseWhitespace: true,
+                removeAttributeQuotes: true
+            }
         }),
         new MiniCssExtractPlugin({
             filename: '[name].[contenthash:8].css',
@@ -113,6 +114,9 @@ module.exports = {
         new webpack.DefinePlugin({
             'env': JSON.stringify('local')
         }),
+        new CopyWebpackPlugin([
+            { from: path.join(__dirname,'public'), to: path.join(__dirname,'dist') },
+        ]),
         new FriendlyErrorsWebpackPlugin(),
         new ProgressBarPlugin({
             format:
@@ -142,9 +146,9 @@ module.exports = {
             '@util': path.resolve(__dirname, 'src/util'),
         }
     },
-    externals:{
+    externals: {
         'react-dom': 'ReactDOM',
         'react': 'React'
     },
-    stats:'errors-only'
+    stats: 'errors-only'
 }
