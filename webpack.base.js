@@ -96,7 +96,7 @@ module.exports = {
         new HtmlWebpackPlugin({
             title: 'hello wp4',
             filename: 'index.html',
-            template: path.join(__dirname, 'src/index.html'),
+            template: path.join(__dirname, 'public/index.html'),
             minify: {
                 removeComments: true,
                 collapseWhitespace: true,
