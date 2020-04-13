@@ -15,11 +15,12 @@
     }
   },
   "presets": [
-    "@babel/preset-env",
-    "@babel/preset-react"
+    "env",
+    "react"
   ],
   "plugins": [
-    "@babel/plugin-transform-runtime",
+    "add-module-exports",
+    "transform-runtime",
     [
       "import",
       {
