@@ -27,7 +27,10 @@ module.exports = {
             {
                 test: /\.js?$/,
                 include: SRC_PATH,
-                use: 'babel-loader'
+                use: [
+                    // 'thread-loader',
+                    'babel-loader'
+                ]
             },
             {
                 test: /\.css$/,
