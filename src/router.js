@@ -7,7 +7,7 @@ function RouterConfig({ history, app }) {
             name: '/',
             getComponent(nextState, cb) {
                 require.ensure([], require => {
-                    cb(null, require('./routes/index').default)
+                    cb(null, require('./routes/index'))
                 })
             }
         }
