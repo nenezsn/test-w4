@@ -8,6 +8,7 @@ import { add } from "@util";//这种方式不能连接到源地址
 
 class Index extends React.Component {
     state = {
+        num:0,
         name: '',
         age: ''
     }
@@ -23,6 +24,19 @@ class Index extends React.Component {
         })
 
     }
+    componentDidMount(){
+        document.getElementById('state').addEventListener('click',()=>{
+            this.setState({
+                num:this.state.num+1
+            })
+            console.log(this.state.num)
+            this.setState({
+                num:this.state.num+1
+            })
+            console.log(this.state.num)
+        })
+        console.warn('在非react事件系统中，setState才会是同步的，例如addEventListener和setTimeout')
+    }
     render() {
         const sum = add(1, 3)
         return <div className={styles.red}>
@@ -30,6 +44,7 @@ class Index extends React.Component {
             <Button onClick={this.getInfo}>hello webpack111{sum}</Button>
             <div className={styles.name}>{this.state.name}</div>
             <div>{this.state.age}</div>
+            <button id='state'>测试setState</button>
         </div>
     }
 }
