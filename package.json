@@ -1,4 +1,5 @@
 {
+  "name": "egg-example",
   "postcss": {
     "plugins": {
       "autoprefixer": {}
@@ -11,7 +12,8 @@
     "build": "webpack",
     "dev": "webpack-dev-server",
     "start": "npm run dev",
-    "build-prod": "webpack --config webpack.config.prod.js"
+    "build-prod": "webpack --config webpack.config.prod.js",
+    "eggdev": "egg-bin dev"
   },
   "devDependencies": {
     "autoprefixer": "^9.5.1",
@@ -28,6 +30,7 @@
     "clean-webpack-plugin": "^3.0.0",
     "css-loader": "^3.5.2",
     "cssnano": "^4.1.10",
+    "egg-bin": "^4.14.1",
     "file-loader": "^6.0.0",
     "friendly-errors-webpack-plugin": "^1.7.0",
     "html-webpack-externals-plugin": "^3.8.0",
@@ -55,6 +58,7 @@
     "babel-plugin-transform-runtime": "^6.23.0",
     "body-parser": "^1.19.0",
     "cookie-parser": "^1.4.5",
+    "egg": "^2.26.0",
     "express": "^4.16.3",
     "koa": "^2.11.0",
     "koa-bodyparser": "^4.3.0",
