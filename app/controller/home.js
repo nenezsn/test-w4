@@ -2,7 +2,8 @@ const Controller = require('egg').Controller;
 
 class HomeController extends Controller {
   async index() {
-    this.ctx.body = 'Hello world';
+    const data = await this.ctx.service.news.getList()
+    await this.ctx.render("index.html",{count:data[0]});
   }
 }
 
