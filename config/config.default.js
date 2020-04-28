@@ -10,3 +10,7 @@ exports.middleware = [
 exports.news = {
     serverUrl: 'https://hacker-news.firebaseio.com/v0',
 }
+exports.static = {
+    prefix: '/', 
+    maxAge: 6000,
+};
