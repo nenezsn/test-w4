@@ -2,9 +2,37 @@ const Controller = require('egg').Controller;
 
 class HomeController extends Controller {
   async index() {
-    const data = await this.ctx.service.news.getList()
-    await this.ctx.render("index.html",{count:data[0]});
+    const { ctx } = this
+    ctx.cookies.set('name','wangbing',{
+      signed:true,
+      // encrypt:true
+    })
+
+    const data = await ctx.service.news.getList()
+    await ctx.render("index.html",{count:data[0]});
+  }
+  async fetchPosts() {
+    const ctx = this.ctx;
+    // 获取 Session 上的内容
+    const userId = ctx.session.userId;
+    // 修改 Session 的值
+    ctx.session.username = ctx.query.name
+    console.log('ctx.session.username',ctx.session.username)
+    ctx.body = {
+      success: ctx.session.username
+    };
   }
 }
 
 module.exports = HomeController;
+
+
+
+
+/**
+ * ctx.set('set-cookie', 'haha=w;');设置响应头
+ * ctx.cookies.set/get ('count',count + 1,options) ;获取设置cookie
+ * ctx.render 渲染ejs模版
+ * ctx.status 设置code码
+ */
+    
