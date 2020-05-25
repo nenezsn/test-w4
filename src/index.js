@@ -5,6 +5,7 @@ import styles from  "./index.less";
 import Img from "./images/logo.jpg";
 import { Button } from 'antd'
 import { add } from "@util";//这种方式不能连接到源地址
+import Auto from './components/count'
 
 class Index extends React.Component {
     state = {
@@ -45,6 +46,7 @@ class Index extends React.Component {
             <div className={styles.name}>{this.state.name}</div>
             <div>{this.state.age}</div>
             <button id='state'>测试setState</button>
+            <Auto name='wb'/>
         </div>
     }
 }
