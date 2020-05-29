@@ -1,15 +1,18 @@
-import React from 'react';
+import React, { useCallback } from 'react';
 import ReactDom from "react-dom";
+import { Provider, connect, useDispatch, useSelector } from 'react-redux'
+import store from './store/store'
 import "./index.css";
-import styles from  "./index.less";
+import styles from "./index.less";
 import Img from "./images/logo.jpg";
 import { Button } from 'antd'
 import { add } from "@util";//这种方式不能连接到源地址
 import Auto from './components/count'
 
+
 class Index extends React.Component {
     state = {
-        num:0,
+        num: 0,
         name: '',
         age: ''
     }
@@ -25,14 +28,14 @@ class Index extends React.Component {
         })
 
     }
-    componentDidMount(){
-        document.getElementById('state').addEventListener('click',()=>{
+    componentDidMount() {
+        document.getElementById('state').addEventListener('click', () => {
             this.setState({
-                num:this.state.num+1
+                num: this.state.num + 1
             })
             console.log(this.state.num)
             this.setState({
-                num:this.state.num+1
+                num: this.state.num + 1
             })
             console.log(this.state.num)
         })
@@ -46,8 +49,11 @@ class Index extends React.Component {
             <div className={styles.name}>{this.state.name}</div>
             <div>{this.state.age}</div>
             <button id='state'>测试setState</button>
-            <Auto name='wb'/>
+            <Auto name='wb' />
         </div>
     }
 }
-ReactDom.render(<Index />, document.getElementById('root'))
+ReactDom.render(<Provider store={store}>
+    <Index />
+</Provider>, document.getElementById('root'))
+
