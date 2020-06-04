@@ -7,6 +7,7 @@ function Index (){
     const [count,setCount] = useState(0)
     const countRef = useRef(count)
     const inputRef = useRef()
+    const sonRef = useRef()
     // 存在缓存问题 不能读到最新的count
     // useEffect(()=>{
     //     const timer = setInterval(() => {
@@ -36,6 +37,19 @@ function Index (){
         <h3>{count}</h3>
         <button onClick={handleClick}>增加</button>
         <input ref={inputRef}/><button onClick={handleValue}>打印</button>
+        <button onClick={()=>sonRef.current.handleClick()}>出发子组件实例</button>>
+        <Son ref={sonRef}/>
     </div>
 }
+
+class Son extends React.Component{
+    handleClick=()=>{
+        alert('this is son event')
+    }
+    render(){
+        return <div>son component</div>
+    }
+}
+
+
 export default Index
