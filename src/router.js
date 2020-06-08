@@ -1,5 +1,5 @@
 import React from 'react'
-import { BrowserRouter as Router, Route } from 'react-router-dom'
+import { BrowserRouter as Router, Route,Redirect } from 'react-router-dom'
 import Lazy from './components/public/layzComponent'
 import Nav from './components/layout/nav'
 import IndexPage from './route/index'
@@ -21,6 +21,7 @@ const RouterConfig = function () {
                 <Route path="/" exact component={IndexPage} />
                 <Route path="/test" exact component={Test} />
                 <Route path="/hooks" exact component={Hook} />
+                <Route path="/render" exact render={()=><Redirect to="/" />} />
             </div>
         </Router>
     )

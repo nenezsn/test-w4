@@ -3,7 +3,8 @@
  */
 import React, { Component } from 'react';
 
-export default function (loading) {
+// 高阶组件 接受一个函数 
+export default function (loadComfn) {
     return class extends Component {
         constructor(props) {
             super(props)
@@ -13,14 +14,14 @@ export default function (loading) {
             }
         }
         // load(props){
-        //     loading().then(Com=>{
+        //     loadComfn().then(Com=>{
         //         this.setState({
         //             Com:Com.default?Com.default : null
         //         })
         //     })
         // }
         load = async (props) => {
-            const Com = await loading()
+            const Com = await loadComfn()
             this.setState({
                 Com: Com.default ? Com.default : null
             })
