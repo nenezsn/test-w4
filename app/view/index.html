@@ -4,11 +4,19 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script src="https://cdn.bootcdn.net/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <title>index 页面</title>
 </head>
 <body>
     <h1>结果</h1>
-    <h1><%=helper.relativeTime(count)%></h1> 
-    <button onclick='alert(222)'>点击</button>
+    <div id='count'><%=helper.relativeTime(count)%></div> 
+    <p></p>
+    <button onclick='add()'>点击</button>
 </body>
+<script>
+    function add(){
+        const count = Number($('#count').html())
+        $('#count').html(count+1)
+    }
+</script>
 </html>

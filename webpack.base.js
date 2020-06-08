@@ -14,13 +14,13 @@ const chalk = require('chalk');
 const theme = require('./theme.js')
 
 const SRC_PATH = path.resolve(__dirname, 'src');
+const OUT_PATH = path.resolve(__dirname,'app/public')
 
 module.exports = {
     entry: path.join(__dirname, 'src/index.js'),
     output: {
         filename: '[name].js',
-        path: path.join(__dirname, 'dist'),
-        chunkFilename:"[name].[hash:8].js",
+        path: OUT_PATH,
         publicPath: ''
     },
     module: {
@@ -101,14 +101,14 @@ module.exports = {
             title: 'hello wp4',
             filename: 'index.html',
             template: path.join(__dirname, 'public/index.html'),
-            minify: {
-                removeComments: true,
-                collapseWhitespace: true,
-                removeAttributeQuotes: true
-            }
+            // minify: {
+            //     removeComments: true,
+            //     collapseWhitespace: true,
+            //     removeAttributeQuotes: true
+            // }
         }),
         new MiniCssExtractPlugin({
-            filename: '[name].[contenthash:8].css',
+            filename: '[name].css', //[name].[contenthash:8].css
             chunkFilename: '[id].css',
         }),
         new OptimizeCssAssetsPlugin({
@@ -119,7 +119,7 @@ module.exports = {
             'env': JSON.stringify('local')
         }),
         new CopyWebpackPlugin([
-            { from: path.join(__dirname,'public'), to: path.join(__dirname,'dist') },
+            { from: path.join(__dirname,'public'), to: OUT_PATH },
         ]),
         new FriendlyErrorsWebpackPlugin(),
         new ProgressBarPlugin({

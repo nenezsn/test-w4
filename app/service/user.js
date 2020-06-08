@@ -2,10 +2,8 @@
 const Service = require('egg').Service;
 
 class NewsService extends Service {
-  async getList() {
-    const { ctx } = this
-    console.log('services:',ctx.query)
-   return [1,2,3]
+  async getUserList() {
+   return [{name:'张三',age:16},{name:'李四',age:18},{name:'王五',age:20}]
   }
 }
 

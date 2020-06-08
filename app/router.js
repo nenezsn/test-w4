@@ -1,8 +1,12 @@
 module.exports = app => {
   const { router, controller } = app;
-  router.get('/', controller.home.index);
+  router.get('/home', controller.home.index);
   router.get('/fetch', controller.home.fetchPosts);
-  router.post('haha', '/api/post', controller.mockApi.getInfo)
   router.post('upload', '/upload', controller.upload.upload)
-  router.get('*',controller.notfound.index)
+
+  // 处理接口demo
+  router.post('/get.user.info', controller.user.userInfo)
+  
+  // 需要将public上的index.html放在view文件夹下，并render 模拟express app.use('*',res=>res.snedFile('index.html'))
+  router.get('*',controller.default.index)
 };

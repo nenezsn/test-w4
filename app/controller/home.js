@@ -7,9 +7,7 @@ class HomeController extends Controller {
       signed:true,
       // encrypt:true
     })
-
-    const data = await ctx.service.news.getList()
-    await ctx.render("index.html",{count:data[0]});
+    await ctx.render("index.html",{count:5});
   }
   async fetchPosts() {
     const ctx = this.ctx;

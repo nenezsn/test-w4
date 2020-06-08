@@ -1,16 +1,18 @@
 import React from 'react'
-import { BrowserRouter as Router, Route,Redirect } from 'react-router-dom'
+import { BrowserRouter as Router, Route, Redirect } from 'react-router-dom'
 import Lazy from './components/public/layzComponent'
 import Nav from './components/layout/nav'
 import IndexPage from './route/index'
-import Test from './route/test'
+import LazyRoute from './route/lazy'
+import Egg from './route/egg'
 
-const Hook  = Lazy(()=>import('./route/hook'))
+const Hook = Lazy(() => import('./route/hook'))
 
 const menu = [
-    { title: '首页', path: '/'},
-    { title: '测试', path: '/test'},
-    { title: 'hooks', path: '/hooks'},
+    { title: '首页', path: '/' },
+    { title: '懒加载测试', path: '/lazy' },
+    { title: 'hooks', path: '/hooks' },
+    { title: 'Egg', path: '/egg' },
 ]
 
 const RouterConfig = function () {
@@ -19,9 +21,10 @@ const RouterConfig = function () {
             <div>
                 <Nav menu={menu} />
                 <Route path="/" exact component={IndexPage} />
-                <Route path="/test" exact component={Test} />
+                <Route path="/lazy" exact component={LazyRoute} />
                 <Route path="/hooks" exact component={Hook} />
-                <Route path="/render" exact render={()=><Redirect to="/" />} />
+                <Route path="/render" exact render={() => <Redirect to="/" />} />
+                <Route path="/egg" exact component={Egg} />
             </div>
         </Router>
     )
