@@ -12,11 +12,17 @@ export default function (loading) {
                 Com: null
             }
         }
-        load(props){
-            loading().then(Com=>{
-                this.setState({
-                    Com:Com.default?Com.default : null
-                })
+        // load(props){
+        //     loading().then(Com=>{
+        //         this.setState({
+        //             Com:Com.default?Com.default : null
+        //         })
+        //     })
+        // }
+        load = async (props) => {
+            const Com = await loading()
+            this.setState({
+                Com: Com.default ? Com.default : null
             })
         }
         render() {
