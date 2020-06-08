@@ -6,3 +6,9 @@
     height: 100px;
     transform: scale(.8);
 }
+a{
+    text-decoration: none;
+}
+ul,li{
+    list-style: none;
+}
