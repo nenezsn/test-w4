@@ -5,9 +5,13 @@ module.exports = app => {
   router.get('/home', middleware.log({ name: 'wangbing' }), controller.home.index);
 
   router.get('/setS', controller.home.setSession);
+  router.get('/setC', controller.home.setCookie);
+  router.get('/clearC',controller.home.clearCookie)
   router.get('/news/:id', controller.news.index)
-  // 上传
+
+  // 上传和下载
   router.post('upload', '/upload', controller.upload.upload)
+  router.get('/download', controller.upload.download)
 
   // 认证
   router.get('/auth', controller.auth.index)

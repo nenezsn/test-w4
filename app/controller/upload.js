@@ -24,5 +24,17 @@ class upload extends Controller {
         code:200
     };
   }
+  async download(){
+    const ctx = this.ctx
+    const filename = ctx.query.n
+    if(!filename){
+      ctx.body='请输入要下载的文件名字'
+      return 
+    }
+    const filepath = path.resolve(__dirname,'../upload/'+filename)
+    ctx.attachment(filepath)
+    ctx.set('Content-Type','IMAGE/PNG')
+    ctx.body = fs.createReadStream(filepath)
+  }
 };
 module.exports = upload
