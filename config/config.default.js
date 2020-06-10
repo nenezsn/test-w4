@@ -1,5 +1,6 @@
 //cookie加签和加密所用到的密钥
 exports.keys = '111112ww3insgaj3kfksycks'
+
 exports.session = {
     // 设置session cookie里面的key
     key: 'SESSION_ID',
@@ -13,30 +14,38 @@ exports.session = {
     renew: true
 }
 
-
+// 模版引擎设置 （需要在plugin安装好插件）
 exports.view = {
     mapping: {
         '.html': 'ejs',
     }
 };
-exports.middleware = [
-    'log'
-];
+
+// 中间件设置(此方法为全局中间件)
+// exports.middleware = ['log'];
+// exports.log = {
+//     enable:false,
+//     match: ['/home']
+// }
+
+
 exports.news = {
     serverUrl: 'https://hacker-news.firebaseio.com/v0',
 }
+
 // 静态资源地址
 exports.static = {
-    prefix: '/', 
+    prefix: '/',
     maxAge: 6000,
 };
+
 // 关闭csrf安全威胁
-exports.security={
-    csrf:{
-        enable:false
+exports.security = {
+    csrf: {
+        enable: false
     }
 }
 
 exports.multipart = {
     mode: 'file',
-  }
+}

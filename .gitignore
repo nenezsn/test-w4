@@ -1,5 +1,7 @@
 dist
 dist/*
+app/public
+app/public/*
 build
 build/*
 node_modules

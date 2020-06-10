@@ -1,12 +1,20 @@
 module.exports = app => {
-  const { router, controller } = app;
-  router.get('/home', controller.home.index);
-  router.get('/fetch', controller.home.fetchPosts);
+  const { router, controller, middleware } = app;
+
+  // 全局路由在config.default配置或者按路由加载
+  router.get('/home', middleware.log({ name: 'wangbing' }), controller.home.index);
+
+  router.get('/setS', controller.home.setSession);
+  router.get('/news/:id', controller.news.index)
+  // 上传
   router.post('upload', '/upload', controller.upload.upload)
+
+  // 认证
+  router.get('/auth', controller.auth.index)
 
   // 处理接口demo
   router.post('/get.user.info', controller.user.userInfo)
-  
+
   // 需要将public上的index.html放在view文件夹下，并render 模拟express app.use('*',res=>res.snedFile('index.html'))
-  router.get('*',controller.default.index)
+  router.get('*', controller.default.index)
 };

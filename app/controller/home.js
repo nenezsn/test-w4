@@ -9,7 +9,7 @@ class HomeController extends Controller {
     })
     await ctx.render("index.html",{count:5});
   }
-  async fetchPosts() {
+  async setSession() {
     const ctx = this.ctx;
     // 获取 Session 上的内容
     const userId = ctx.session.userId;
