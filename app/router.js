@@ -3,10 +3,14 @@ module.exports = app => {
 
   // 全局路由在config.default配置或者按路由加载
   router.get('/home', middleware.log({ name: 'wangbing' }), controller.home.index);
-
+  router.get('/redir', controller.home.redir);
+  
   router.get('/setS', controller.home.setSession);
+  router.get('/getS', controller.home.getSession);
   router.get('/setC', controller.home.setCookie);
   router.get('/clearC',controller.home.clearCookie)
+
+
   router.get('/news/:id', controller.news.index)
 
   // 上传和下载

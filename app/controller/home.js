@@ -2,23 +2,47 @@ const Controller = require('egg').Controller;
 
 class HomeController extends Controller {
   async index() {
-    const { ctx } = this
-    ctx.cookies.set('name','wangbing',{
-      signed:true,
-      // encrypt:true
-    })
-    await ctx.render("index.html",{count:5});
+    const ctx = this.ctx
+    await ctx.render("index.html", { count: 5 });
+
   }
   async setSession() {
     const ctx = this.ctx;
+    const query =
     // 获取 Session 上的内容
-    const userId = ctx.session.userId;
+    ctx.session.userId = 1
     // 修改 Session 的值
-    ctx.session.username = ctx.query.name
-    console.log('ctx.session.username',ctx.session.username)
+    ctx.session.username = '王起'
+    ctx.body = '设置成功'
+  }
+
+  async getSession(){
+    const ctx = this.ctx
     ctx.body = {
-      success: ctx.session.username
-    };
+        id:ctx.session.userId,
+        name:ctx.session.username
+      }
+  }
+
+  async setCookie() {
+    const ctx = this.ctx;
+    ctx.cookies.set('name', 'wangbing1', {
+      signed: true,
+      httpOnly:false,
+      maxAge:24*3600
+      // encrypt:true
+    })
+    ctx.body = '设置成功'
+  }
+
+  async clearCookie() {
+    const ctx = this.ctx
+    ctx.cookies.set('name', null)
+    ctx.body = '清除成功'
+  }
+
+  async redir(){
+    this.ctx.redirect('https://cloud.seentao.com')
   }
 }
 
@@ -33,4 +57,4 @@ module.exports = HomeController;
  * ctx.render 渲染ejs模版
  * ctx.status 设置code码
  */
-    
+

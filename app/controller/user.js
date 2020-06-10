@@ -1,7 +1,7 @@
 const Controller = require('egg').Controller
 class User extends Controller{
     async userInfo (){
-        const userlist = await this.ctx.service.user.getUserList()
+        const userlist = await this.service.user.getUserList()
         const { name  } = this.ctx.request.body
         const result = userlist.find(item=>item.name == name)
         if(result){
