@@ -23,6 +23,8 @@ module.exports = app => {
   // 处理接口demo
   router.post('/get.user.info', controller.user.userInfo)
 
+  router.get('/school',controller.school.index)
+
   // 需要将public上的index.html放在view文件夹下，并render 模拟express app.use('*',res=>res.snedFile('index.html'))
   router.get('*', controller.default.index)
 };

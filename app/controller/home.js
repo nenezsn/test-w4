@@ -3,7 +3,8 @@ const Controller = require('egg').Controller;
 class HomeController extends Controller {
   async index() {
     const ctx = this.ctx
-    await ctx.render("index.html", { count: 5 });
+    console.log('ctx',ctx.app.count)
+    await ctx.render("index.html", { count:ctx.app.count  });
 
   }
   async setSession() {
