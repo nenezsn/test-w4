@@ -3,6 +3,7 @@
  */
 import React, { Component } from 'react';
 import { connect } from 'react-redux'
+import store from '../store/store'
 
 class reduxMid extends Component {
     delay = time => {
@@ -25,17 +26,19 @@ class reduxMid extends Component {
         this.props.dispatch(this.delay(3))
     }
     handleSaga = () => {
+        console.log('this',store.getState(),this.props.price)
         this.props.dispatch({
             type: 'ADDE'
         })
-    }
-    componentDidMount() {
-        this.handleThunk()
+        console.log('this',store.getState(),this.props.price)
     }
     render() {
         return (
             <div>
                 {this.props.price}
+                <button onClick={this.handleThunk}>thunk</button>
+                <button onClick={this.handlePromise}>promise</button>
+                <button onClick={this.handleSaga}>handleSaga</button>
             </div>
         );
     }
