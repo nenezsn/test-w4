@@ -37,10 +37,11 @@ class reduxMid extends Component {
         console.log(this)
         return (
             <div>
-                {this.props.price}
+                {this.props.price}{store.getState().app.price}
                 <button onClick={this.handleThunk}>thunk</button>
                 <button onClick={this.handlePromise}>promise</button>
                 <button onClick={this.handleSaga}>handleSaga</button>
+                <button onClick={()=>store.dispatch({type:'ADD_PRICE'})}>store.dispatch</button>
                 <button onClick={this.props.ADD_PRICE}>mapDispatch</button>
             </div>
         );
@@ -54,7 +55,8 @@ function mapStateToProps(state) {
 
 function mapDispatchToProps(dispatch) {
     return {
-        ADD_PRICE: () => dispatch({ type: "ADD_PRICE" })
+        ADD_PRICE: () => dispatch({ type: "ADD_PRICE" }),
+        dispatch
     }
 }
 
