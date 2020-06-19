@@ -34,7 +34,6 @@ class reduxMid extends Component {
         console.log('this', store.getState(), this.props.price)
     }
     render() {
-        console.log(this)
         return (
             <div>
                 {this.props.price}{store.getState().app.price}
