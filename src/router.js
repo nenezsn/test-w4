@@ -5,6 +5,7 @@ import Nav from './components/layout/nav'
 import IndexPage from './route/index'
 import LazyRoute from './route/lazy'
 import Egg from './route/egg'
+import Life from './route/life'
 
 const Hook = Lazy(() => import('./route/hook'))
 
@@ -25,6 +26,7 @@ const RouterConfig = function () {
                 <Route path="/hooks" exact component={Hook} />
                 <Route path="/render" exact render={() => <Redirect to="/" />} />
                 <Route path="/egg" exact component={Egg} />
+                <Route path="/life" exact component={Life} />
             </div>
         </Router>
     )
