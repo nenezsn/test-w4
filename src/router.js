@@ -27,6 +27,7 @@ const RouterConfig = function () {
                 <Route path="/render" exact render={() => <Redirect to="/" />} />
                 <Route path="/egg" exact component={Egg} />
                 <Route path="/life" exact component={Life} />
+                <Route path="/test" exact component={require('./route/immutable')} />
             </div>
         </Router>
     )

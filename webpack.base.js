@@ -116,7 +116,7 @@ module.exports = {
             cssProcessor: require('cssnano')
         }),
         new webpack.DefinePlugin({
-            'env': JSON.stringify('local')
+            'env': JSON.stringify(process.env.NODE_ENV)
         }),
         new CopyWebpackPlugin([
             { from: path.join(__dirname,'public'), to: OUT_PATH },
