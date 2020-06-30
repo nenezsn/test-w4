@@ -150,9 +150,9 @@ module.exports = {
             '@util': path.resolve(__dirname, 'src/util'),
         }
     },
-    externals: {
-        'react-dom': 'ReactDOM',
-        'react': 'React'
-    },
+    // externals: {
+    //     'react-dom': 'ReactDOM',
+    //     'react': 'React'
+    // },
     stats: 'errors-only'
 }

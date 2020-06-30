@@ -51,5 +51,24 @@ class Son extends React.Component{
     }
 }
 
+/**
+ * ref的作用 可以对比 countRef和count2的不同效果；
+ * 可以理解成 countRef”跨渲染周期”保存数据  count2则会因为每次初始化而重新赋值
+ */
+function hook2 (){
+    let [count,setCount] = React.useState(0)
+    let countRef = React.useRef(count)
+    let count2 = 0
+    React.useEffect(()=>{
+        setTimeout(() => {
+                console.log('countRef',countRef.current)
+                console.log('count2',count2)
+        }, 1000);
+    },[count])
+    return <div>
+        <h3>{count}</h3>
+        <button onClick={()=>{setCount(count+1);countRef.current = count+1;count2 = count+1}}>加</button>
+    </div>
+}
 
 export default Index
