@@ -1,9 +1,10 @@
+import useAddCountHook from './useAddCountHook'
 // 抽离hooks测试
 function hook(){
-   const [log,add] =  splitHooks()
+   const [count,add] =  useAddCountHook(1)
+   console.log('count',count)
    return <div>
        <button onClick={add}>加</button>
-       <button onClick={log}>打印</button>
    </div>
 }
 export default hook

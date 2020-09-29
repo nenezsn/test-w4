@@ -11,7 +11,7 @@ var CopyWebpackPlugin = require('copy-webpack-plugin');//将某个目录直接�
 const ProgressBarPlugin = require('progress-bar-webpack-plugin');
 const chalk = require('chalk');
 
-const theme = require('./theme.js')
+const theme = require('./theme.js');
 
 const SRC_PATH = path.resolve(__dirname, 'src');
 const OUT_PATH = path.resolve(__dirname,'app/public')

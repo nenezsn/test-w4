@@ -1,5 +1,6 @@
 /**
  * @description useRef处理capture value 问题  和 获取dom节点
+ * useRef 会在每次渲染时返回同一个 ref 对象
  */
 import React,{useState,useRef, useEffect, useCallback} from 'react';
 
@@ -71,4 +72,4 @@ function hook2 (){
     </div>
 }
 
-export default Index
+export default hook2

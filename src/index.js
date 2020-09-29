@@ -1,10 +1,12 @@
 import React from 'react';
 import ReactDom from "react-dom";
+React.Component.prototype.$message = '全局message'
 
 import { Provider, connect } from 'react-redux'
 import store from './store/store'
 import "./index.css";
 import Router from './router'
+
 
 // 订阅监听store的变化，手动更新
 store.subscribe(() => {
