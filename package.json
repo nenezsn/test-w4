@@ -63,6 +63,7 @@
     "egg": "^2.26.0",
     "egg-view-ejs": "^2.0.1",
     "express": "^4.16.3",
+    "helmet": "^3.6.1",
     "immutable": "^4.0.0-rc.12",
     "koa": "^2.11.0",
     "koa-bodyparser": "^4.3.0",

@@ -14,7 +14,8 @@ const chalk = require('chalk');
 const theme = require('./theme.js');
 
 const SRC_PATH = path.resolve(__dirname, 'src');
-const OUT_PATH = path.resolve(__dirname,'app/public')
+// const OUT_PATH = path.resolve(__dirname,'app/public')
+const OUT_PATH = path.resolve(__dirname,'dist')
 
 module.exports = {
     entry: path.join(__dirname, 'src/index.js'),
