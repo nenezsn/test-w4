@@ -7,7 +7,7 @@ const compression = require('compression')
 const request = require('request');
 
 const app = express()
-app.use(helmet());// iframe 嵌套限制
+// app.use(helmet());// iframe 嵌套限制
 app.set('port', 3000)
 app.set('trust proxy', true)
 app.use(compression())

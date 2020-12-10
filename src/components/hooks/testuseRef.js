@@ -38,7 +38,7 @@ function Index (){
         <h3>{count}</h3>
         <button onClick={handleClick}>增加</button>
         <input ref={inputRef}/><button onClick={handleValue}>打印</button>
-        <button onClick={()=>sonRef.current.handleClick()}>出发子组件实例</button>>
+        <button onClick={()=>sonRef.current.handleClick()}>触发子组件实例</button>
         <Son ref={sonRef}/>
     </div>
 }

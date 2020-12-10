@@ -14,6 +14,7 @@ const menu = [
     { title: '懒加载测试', path: '/lazy' },
     { title: 'hooks', path: '/hooks' },
     { title: 'Egg', path: '/egg' },
+    { title: 'life', path: '/life' },
 ]
 
 const RouterConfig = function () {
