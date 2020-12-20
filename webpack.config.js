@@ -7,7 +7,7 @@ module.exports = webpackMerge(common, {
     mode: 'development',
     devServer: {
         contentBase: path.join(__dirname, 'dist'),
-        port: '3001',
+        port: '8000',
         hot: true,
         open: true,
         compress: true,
