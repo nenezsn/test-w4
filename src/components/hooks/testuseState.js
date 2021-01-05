@@ -11,7 +11,8 @@ function Index() {
     function add() {
         setCount(count + 1)
         // setCount(count+1) //不生效，count依旧是旧值
-        // 如果state是对象  setCount不会自动合并 需要手动合并
+        // 可以使用此方法，拿到最新更新后的count，但是如果state是对象  setCount不会自动合并 需要手动合并
+        // 建议使用react.useEffect来监听count的变化，进行之后的操作
         // setCount(prevCount=>{
         //     return prevCount+1
         // })
