@@ -15,14 +15,14 @@ const theme = require('./theme.js');
 
 const SRC_PATH = path.resolve(__dirname, 'src');
 // const OUT_PATH = path.resolve(__dirname,'app/public')
-const OUT_PATH = path.resolve(__dirname,'dist')
+const OUT_PATH = path.resolve(__dirname,'dist/app')
 
 module.exports = {
     entry: path.join(__dirname, 'src/index.js'),
     output: {
         filename: '[name].js',
         path: OUT_PATH,
-        publicPath: ''
+        publicPath: '/app/'
     },
     module: {
         rules: [

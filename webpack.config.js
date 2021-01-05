@@ -6,7 +6,7 @@ var path = require('path')
 module.exports = webpackMerge(common, {
     mode: 'development',
     devServer: {
-        contentBase: path.join(__dirname, 'dist'),
+        contentBase: path.join(__dirname, 'dist/app/'),
         port: '8000',
         hot: true,
         open: true,

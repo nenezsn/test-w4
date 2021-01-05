@@ -21,7 +21,7 @@ const menu = [
 
 const RouterConfig = function () {
     return (
-        <Router>
+        <Router basename='/app'>
             <div>
                 <Nav menu={menu} />
                 <Route path="/" exact component={IndexPage} />
